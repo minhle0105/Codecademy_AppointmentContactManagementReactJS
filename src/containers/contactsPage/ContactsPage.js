@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {ContactForm} from "../../components/contactForm/ContactForm";
 import {TileList} from "../../components/tileList/TileList";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SweetAlert2 from 'react-sweetalert2';
 
 export const ContactsPage = (props) => {
     /*
@@ -12,6 +13,7 @@ export const ContactsPage = (props) => {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [nameExisted, setNameExisted] = useState(false);
+    const [swalProps, setSwalProps] = useState({});
 
     const contactList = props.currentContactList;
     const setNewContacts = props.setNewContacts;
@@ -40,6 +42,14 @@ export const ContactsPage = (props) => {
         */
         if (!nameExisted) {
             setNewContacts(name, phone, email);
+            setSwalProps({
+                show: true,
+                title: `Successfully added contact`,
+                text: 'Hello World',
+                timer: 1500,
+                showConfirmButton: false,
+                icon: 'success',
+            });
             setName("");
             setPhone("");
             setEmail("");
@@ -62,6 +72,7 @@ export const ContactsPage = (props) => {
                 <h2>Contacts</h2>
                 <TileList tiles={contactList} type="contact" />
             </section>
+            <SweetAlert2 {...swalProps} />
         </div>
     );
 };
