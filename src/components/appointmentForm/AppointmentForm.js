@@ -24,7 +24,7 @@ export const AppointmentForm = ({
         <form onSubmit={handleSubmit}>
             <label htmlFor="appTitle">Title</label>
             <input id="appTitle" type="text" value={title} onChange={(e) => {setTitle(e.target.value)}} />
-            <ContactPicker contactList={contacts} name={contact} handleChange={setContact} />
+            <ContactPicker contactList={contacts} name={contact} handleChange={(e) => {setContact(e.target.value)}} />
             <label htmlFor="Date">Date</label>
             <input id="appDate" type="date" min={getTodayString()} value={date} onChange={(e) => {setDate(e.target.value)}} />
             <label htmlFor="appTime">Time</label>

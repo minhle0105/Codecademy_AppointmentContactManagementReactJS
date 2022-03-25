@@ -1,7 +1,6 @@
 import React from "react";
 
 export const ContactPicker = (props) => {
-    console.log("CONTACT PICKER")
     const contactList = props.contactList;
     const handleChange = props.handleChange;
     const name = props.name;
