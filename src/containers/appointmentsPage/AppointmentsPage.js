@@ -20,6 +20,20 @@ export const AppointmentsPage = (props) => {
     const [time, setTime] = useState('');
     const [swalProps, setSwalProps] = useState({});
 
+    const showSuccessAlert = () => {
+        setSwalProps({
+            show: true,
+            title: `Your appointment with ${contact} is successfully booked on ${date} at ${time}.`,
+            showConfirmButton: false,
+            icon: 'success',
+        });
+        setTimeout(() => setSwalProps({
+            show: false,
+            title: `Your appointment with ${contact} is successfully booked on ${date} at ${time}.`,
+            showConfirmButton: false,
+            icon: 'success',
+        }), 2000);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,14 +41,7 @@ export const AppointmentsPage = (props) => {
         Add contact info and clear data
         */
         addAppointment(title, contact, date, time);
-        setSwalProps({
-            show: true,
-            title: `Your appointment with ${contact} is successfully booked on ${date} at ${time}.`,
-            text: 'Hello World',
-            timer: 2000,
-            showConfirmButton: false,
-            icon: 'success',
-        });
+        showSuccessAlert();
         setContact('');
         setTitle('');
         setDate('');
@@ -54,7 +61,7 @@ export const AppointmentsPage = (props) => {
                 <h2>Appointments</h2>
                 <TileList tiles={appointmentList} type="appointment"/>
             </section>
-            <SweetAlert2 {...swalProps} />
+            <SweetAlert2 title={swalProps.title} show={swalProps.show} icon={swalProps.icon} showConfirmButton={swalProps.showConfirmButton} />
         </div>
     );
 };
