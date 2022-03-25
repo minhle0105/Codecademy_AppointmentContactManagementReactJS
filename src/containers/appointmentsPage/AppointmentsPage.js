@@ -42,7 +42,7 @@ export const AppointmentsPage = (props) => {
             <hr/>
             <section>
                 <h2>Appointments</h2>
-                <TileList tiles={appointmentList} />
+                <TileList tiles={appointmentList} type="appointment" />
             </section>
         </div>
     );

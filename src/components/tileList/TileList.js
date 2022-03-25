@@ -1,14 +1,16 @@
 import React from "react";
-import {Tile} from "../tile/Tile";
+import {AppointmentTile} from "../tile/AppointmentTile";
+import {ContactTile} from "../tile/ContactTile";
 
 export const TileList = (props) => {
 
     let tiles = props.tiles;
+    let type = props.type;
 
     return (
         <div>
             {tiles.map((tile, index) => (
-                <Tile key={index} tile={tile} />
+                type === "appointment" ? <AppointmentTile tile={tile} key={index} /> : <ContactTile tile={tile} key={index} />
             ))}
         </div>
     );

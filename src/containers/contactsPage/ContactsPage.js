@@ -42,6 +42,7 @@ export const ContactsPage = (props) => {
             setName("");
             setPhone("");
             setEmail("");
+            console.log(contactList)
         }
     };
 
@@ -59,7 +60,7 @@ export const ContactsPage = (props) => {
             <hr/>
             <section>
                 <h2>Contacts</h2>
-                <TileList tiles={contactList} />
+                <TileList tiles={contactList} type="contact" />
             </section>
         </div>
     );
