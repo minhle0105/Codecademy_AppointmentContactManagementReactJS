@@ -1,9 +1,10 @@
 import React from "react";
+import Table from "react-bootstrap/Table"
 
 export const AppointmentTile = ({ data }) => {
     return (
         <div className="tile-container">
-            <table>
+            <Table responsive>
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -24,7 +25,7 @@ export const AppointmentTile = ({ data }) => {
                         </tbody>
                     )
                 })}
-            </table>
+            </Table>
         </div>
     );
 };
