@@ -95,7 +95,7 @@ export const ContactsPage = (props) => {
             <hr/>
             <section style={{marginBottom: 5}}>
                 <h2>Contacts</h2>
-                <TileList tiles={contactList} type="contact" />
+                <TileList handleDelete={props.handleDelete} tiles={contactList} type="contact" />
             </section>
             <SweetAlert2 title={swalProps.title} show={swalProps.show} icon={swalProps.icon} showConfirmButton={swalProps.showConfirmButton} />
         </div>
