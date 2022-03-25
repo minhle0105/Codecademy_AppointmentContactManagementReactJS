@@ -17,7 +17,7 @@ export const ContactTile = ({ data, handleDelete }) => {
     const [swalProps, setSwalProps] = useState({});
 
     const passDataToDelete = (i) => {
-        handleDelete(i);
+        handleDelete(i, "contact");
         showDeleteAlert()
     }
 

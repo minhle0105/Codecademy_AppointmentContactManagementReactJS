@@ -11,7 +11,6 @@ function App() {
     */
     const [contacts, setContacts] = useState(JSON.parse(sessionStorage.getItem("contacts")) ? JSON.parse(sessionStorage.getItem("contacts")) : []);
     const [appointments, setAppointments] = useState(JSON.parse(sessionStorage.getItem("appointments")) ? JSON.parse(sessionStorage.getItem("appointments")) : []);
-
     const
         ROUTES = {
             CONTACTS: "/contacts",
@@ -50,10 +49,14 @@ function App() {
         ]);
     };
 
-    const handleDelete = (i) => {
-        let newContacts = [...contacts];
-        newContacts.splice(i, 1);
-        setContacts(newContacts);
+    const handleDeleteContact = (i) => {
+        contacts.splice(i, 1);
+        setContacts(contacts);
+    }
+
+    const handleDeleteAppointment = (i) => {
+        appointments.splice(i, 1);
+        setAppointments(appointments);
     }
 
     return (
@@ -73,11 +76,11 @@ function App() {
                     </Route>
                     <Route path={ROUTES.CONTACTS}>
                         {/* Add props to ContactsPage */}
-                        <ContactsPage currentContactList={contacts} handleDelete={handleDelete} setNewContacts={setNewContacts}/>
+                        <ContactsPage currentContactList={contacts} handleDelete={handleDeleteContact} setNewContacts={setNewContacts}/>
                     </Route>
                     <Route path={ROUTES.APPOINTMENTS}>
                         {/* Add props to AppointmentsPage */}
-                        <AppointmentsPage currentAppointmentList={appointments} currentContactList={contacts} setNewAppointments={setNewAppointments} />
+                        <AppointmentsPage currentAppointmentList={appointments} handleDelete={handleDeleteAppointment} currentContactList={contacts} setNewAppointments={setNewAppointments} />
                     </Route>
                 </Switch>
             </main>
