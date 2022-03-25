@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {AppointmentForm} from "../../components/appointmentForm/AppointmentForm";
 import {TileList} from "../../components/tileList/TileList";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SweetAlert2 from 'react-sweetalert2';
 
 export const AppointmentsPage = (props) => {
 
@@ -17,6 +18,7 @@ export const AppointmentsPage = (props) => {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [swalProps, setSwalProps] = useState({});
 
 
     const handleSubmit = (e) => {
@@ -25,6 +27,14 @@ export const AppointmentsPage = (props) => {
         Add contact info and clear data
         */
         addAppointment(title, contact, date, time);
+        setSwalProps({
+            show: true,
+            title: `Your appointment with ${contact} is successfully booked on ${date} at ${time}.`,
+            text: 'Hello World',
+            timer: 2000,
+            showConfirmButton: false,
+            icon: 'success',
+        });
         setContact('');
         setTitle('');
         setDate('');
@@ -44,6 +54,7 @@ export const AppointmentsPage = (props) => {
                 <h2>Appointments</h2>
                 <TileList tiles={appointmentList} type="appointment"/>
             </section>
+            <SweetAlert2 {...swalProps} />
         </div>
     );
 };
