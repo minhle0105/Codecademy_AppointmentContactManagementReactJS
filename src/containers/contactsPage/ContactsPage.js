@@ -22,7 +22,6 @@ export const ContactsPage = (props) => {
         const nameIsDuplicate = () => {
             const found = contactList.find((contact) => contact.name === name);
             return found !== undefined;
-
         };
 
         if (nameIsDuplicate()) {
@@ -33,6 +32,36 @@ export const ContactsPage = (props) => {
     }, [name, contactList, nameExisted]);
 
 
+    const showSuccessAlert = () => {
+        setSwalProps({
+            show: true,
+            title: `Successfully added ${name}`,
+            icon: 'success',
+            showConfirmButton: false,
+        });
+        setTimeout(() => setSwalProps({
+            show: false,
+            title: `Successfully added ${name}`,
+            icon: 'success',
+            showConfirmButton: false,
+        }), 1500);
+    }
+
+    const showContactExistedAlert = () => {
+        setSwalProps({
+            show: true,
+            title: `Contact already existed`,
+            icon: 'error',
+            showConfirmButton: false,
+        });
+        setTimeout(() => setSwalProps({
+            show: false,
+            title: `Contact already existed`,
+            icon: 'error',
+            showConfirmButton: false,
+        }), 1500);
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,17 +71,13 @@ export const ContactsPage = (props) => {
         */
         if (!nameExisted) {
             setNewContacts(name, phone, email);
-            setSwalProps({
-                show: true,
-                title: `Successfully added contact`,
-                text: 'Hello World',
-                timer: 1500,
-                showConfirmButton: false,
-                icon: 'success',
-            });
+            showSuccessAlert();
             setName("");
             setPhone("");
             setEmail("");
+        }
+        else {
+            showContactExistedAlert();
         }
     };
 
@@ -72,7 +97,7 @@ export const ContactsPage = (props) => {
                 <h2>Contacts</h2>
                 <TileList tiles={contactList} type="contact" />
             </section>
-            <SweetAlert2 {...swalProps} />
+            <SweetAlert2 title={swalProps.title} show={swalProps.show} icon={swalProps.icon} showConfirmButton={swalProps.showConfirmButton} />
         </div>
     );
 };
