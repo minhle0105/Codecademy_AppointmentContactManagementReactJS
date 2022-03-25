@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {ContactForm} from "../../components/contactForm/ContactForm";
 import {TileList} from "../../components/tileList/TileList";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const ContactsPage = (props) => {
     /*
@@ -51,13 +52,13 @@ export const ContactsPage = (props) => {
     */
 
     return (
-        <div>
-            <section>
+        <div className="container" style={{borderStyle: "dashed"}}>
+            <section style={{marginTop: 5}}>
                 <h2>Add Contact</h2>
                 <ContactForm name={name} phone={phone} email={email} handleSubmit={handleSubmit} setEmail={setEmail} setName={setName} setPhone={setPhone} />
             </section>
             <hr/>
-            <section>
+            <section style={{marginBottom: 5}}>
                 <h2>Contacts</h2>
                 <TileList tiles={contactList} type="contact" />
             </section>

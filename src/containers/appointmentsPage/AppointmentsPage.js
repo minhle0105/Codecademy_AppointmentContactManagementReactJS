@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {AppointmentForm} from "../../components/appointmentForm/AppointmentForm";
 import {TileList} from "../../components/tileList/TileList";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const AppointmentsPage = (props) => {
 
@@ -28,19 +29,18 @@ export const AppointmentsPage = (props) => {
         setTitle('');
         setDate('');
         setTime('');
-
     };
 
     return (
-        <div>
-            <section>
+        <div className="container" style={{borderStyle: "dashed"}}>
+            <section style={{marginTop: 5}}>
                 <h2>Add Appointment</h2>
                 <AppointmentForm time={time} date={date} title={title} contact={contact} setContact={setContact}
                                  setDate={setDate} setTitle={setTitle} setTime={setTime} handleSubmit={handleSubmit}
                                  contacts={contactList}/>
             </section>
             <hr/>
-            <section>
+            <section style={{marginBottom: 5}}>
                 <h2>Appointments</h2>
                 <TileList tiles={appointmentList} type="appointment"/>
             </section>
