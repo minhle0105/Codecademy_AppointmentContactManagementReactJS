@@ -13,6 +13,12 @@ export const ContactForm = ({
                                 handleSubmit
                             }) => {
 
+    const handleResetButton = () => {
+        setName('');
+        setPhone('');
+        setEmail('');
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
@@ -31,7 +37,8 @@ export const ContactForm = ({
                     setEmail(e.target.value)
                 }} required/>
             </Form.Group>
-            <Button variant="outline-success" type="submit">Submit</Button>
+            <Button style={{width: 100}} variant="outline-success" type="submit">Submit</Button>
+            <Button style={{marginLeft: 10, width: 100}} variant="outline-danger" onClick={handleResetButton}>Reset</Button>
         </Form>
     );
 };

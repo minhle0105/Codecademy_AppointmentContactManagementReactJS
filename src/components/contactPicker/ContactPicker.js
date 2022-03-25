@@ -5,7 +5,7 @@ export const ContactPicker = (props) => {
     const handleChange = props.handleChange;
     const name = props.name;
     return (
-        <div>
+        <div style={{marginBottom: 10}}>
             <label htmlFor="contactPickerInput">Choose Contact</label>
             <select name={name} id="contactPickerInput" onChange={handleChange}>
                 <option defaultValue value={""} key={-1}>No Contact Selected</option>

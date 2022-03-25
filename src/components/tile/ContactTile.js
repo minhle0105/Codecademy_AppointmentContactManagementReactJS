@@ -14,7 +14,7 @@ export const ContactTile = ({ data }) => {
     }
     return (
         <div className="tile-container">
-            <Table striped bordered hover>
+            <Table responsive>
                 <thead>
                 <tr style={{borderBottom: "5px"}}>
                     <th>Name</th>
