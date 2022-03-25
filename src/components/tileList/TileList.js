@@ -9,7 +9,7 @@ export const TileList = (props) => {
 
     return (
         <div>
-            {type === "appointment" ? <AppointmentTile data={tiles} /> : <ContactTile data={tiles} /> }
+            {type === "appointment" ? <AppointmentTile data={tiles} handleDelete={props.handleDelete} /> : <ContactTile handleDelete={props.handleDelete} data={tiles} /> }
         </div>
     );
 };

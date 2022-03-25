@@ -59,7 +59,7 @@ export const AppointmentsPage = (props) => {
             <hr/>
             <section style={{marginBottom: 5}}>
                 <h2>Appointments</h2>
-                <TileList tiles={appointmentList} type="appointment"/>
+                <TileList handleDelete={props.handleDelete} tiles={appointmentList} type="appointment"/>
             </section>
             <SweetAlert2 title={swalProps.title} show={swalProps.show} icon={swalProps.icon} showConfirmButton={swalProps.showConfirmButton} />
         </div>
