@@ -6,7 +6,7 @@ export const ContactPicker = (props) => {
     const name = props.name;
     return (
         <div>
-            <select name={name} id="contactPickerInput" onChange={handleChange}>
+            <select name={name} id="contactPickerInput" onChange={handleChange} required>
                 <option selected={!name} defaultValue value={""} key={-1}>No Contact Selected</option>
                 {contactList.map((value, key) => {
                     return (
