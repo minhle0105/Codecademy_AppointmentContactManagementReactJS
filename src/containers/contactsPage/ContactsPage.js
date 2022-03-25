@@ -54,7 +54,7 @@ export const ContactsPage = (props) => {
         <div>
             <section>
                 <h2>Add Contact</h2>
-                <ContactForm name={name} phone={phone} email={email} handleSubmit={handleSubmit} />
+                <ContactForm name={name} phone={phone} email={email} handleSubmit={handleSubmit} setEmail={setEmail} setName={setName} setPhone={setPhone} />
             </section>
             <hr/>
             <section>
