@@ -50,6 +50,12 @@ function App() {
         ]);
     };
 
+    const handleDelete = (i) => {
+        let newContacts = [...contacts];
+        newContacts.splice(i, 1);
+        setContacts(newContacts);
+    }
+
     return (
         <>
             <nav>
@@ -67,7 +73,7 @@ function App() {
                     </Route>
                     <Route path={ROUTES.CONTACTS}>
                         {/* Add props to ContactsPage */}
-                        <ContactsPage currentContactList={contacts} setNewContacts={setNewContacts}/>
+                        <ContactsPage currentContactList={contacts} handleDelete={handleDelete} setNewContacts={setNewContacts}/>
                     </Route>
                     <Route path={ROUTES.APPOINTMENTS}>
                         {/* Add props to AppointmentsPage */}
