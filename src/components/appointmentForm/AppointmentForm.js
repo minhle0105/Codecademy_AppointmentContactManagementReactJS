@@ -2,7 +2,7 @@ import React from "react";
 import {ContactPicker} from "../contactPicker/ContactPicker";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button"
-import './AppointmentForm.css'
+import {Form} from "react-bootstrap";
 
 export const AppointmentForm = ({
                                     contacts,
@@ -24,16 +24,25 @@ export const AppointmentForm = ({
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="appTitle">Title</label>
-            <input id="appTitle" type="text" value={title} onChange={(e) => {setTitle(e.target.value)}} />
-            <ContactPicker contactList={contacts} name={contact} handleChange={(e) => {setContact(e.target.value)}} />
-            <label htmlFor="appDate">Date</label>
-            <input id="appDate" type="date" min={getTodayString()} value={date} onChange={(e) => {setDate(e.target.value)}} />
-            <label htmlFor="appTime">Time</label>
-            <input id="appTime" type="time" value={time} onChange={(e) => {setTime(e.target.value)}} />
+        <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+                <Form.Label htmlFor="appTitle">Title</Form.Label>
+                <input id="appTitle" type="text" value={title} onChange={(e) => {setTitle(e.target.value)}} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label>Choose Contact</Form.Label>
+                <ContactPicker contactList={contacts} name={contact} handleChange={(e) => {setContact(e.target.value)}} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label htmlFor="appDate">Date</Form.Label>
+                <input id="appDate" type="date" min={getTodayString()} value={date} onChange={(e) => {setDate(e.target.value)}} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label htmlFor="appTime">Time</Form.Label>
+                <input id="appTime" type="time" value={time} onChange={(e) => {setTime(e.target.value)}} />
+            </Form.Group>
             <Button style={{marginTop: 5, width: 200}} variant="outline-success" type="submit">Book Appointment</Button>
             <Button style={{marginLeft: 10, marginTop: 5, width: 200}} variant="outline-danger" type="reset">Reset Form</Button>
-        </form>
+        </Form>
     );
 };
