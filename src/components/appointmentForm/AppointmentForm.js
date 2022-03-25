@@ -23,6 +23,13 @@ export const AppointmentForm = ({
         return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     };
 
+    const handleReset = () => {
+        setTitle('');
+        setContact('');
+        setDate('');
+        setTime('');
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
@@ -42,7 +49,7 @@ export const AppointmentForm = ({
                 <input id="appTime" type="time" value={time} onChange={(e) => {setTime(e.target.value)}} />
             </Form.Group>
             <Button style={{marginTop: 5, width: 200}} variant="outline-success" type="submit">Book Appointment</Button>
-            <Button style={{marginLeft: 10, marginTop: 5, width: 200}} variant="outline-danger" type="reset">Reset Form</Button>
+            <Button style={{marginLeft: 10, marginTop: 5, width: 200}} variant="outline-danger" onClick={handleReset}>Reset Form</Button>
         </Form>
     );
 };
