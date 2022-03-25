@@ -9,9 +9,7 @@ export const TileList = (props) => {
 
     return (
         <div>
-            {tiles.map((tile, index) => (
-                type === "appointment" ? <AppointmentTile tile={tile} key={index} /> : <ContactTile tile={tile} key={index} />
-            ))}
+            {type === "appointment" ? <AppointmentTile data={tiles} /> : <ContactTile data={tiles} /> }
         </div>
     );
 };

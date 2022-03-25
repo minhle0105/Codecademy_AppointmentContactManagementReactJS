@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ContactTile = ({ tile }) => {
+export const ContactTile = ({ data }) => {
     return (
         <div className="tile-container">
             <table style={{borderStyle: "dashed", width: "100%"}}>
@@ -12,14 +12,19 @@ export const ContactTile = ({ tile }) => {
                 </tr>
                 </thead>
 
-                <tbody>
-                <tr>
-                    <td>{tile.name}</td>
-                    <td>{tile.phone}</td>
-                    <td>{tile.email}</td>
-                </tr>
-                </tbody>
 
+                {data.map((contact, index) => {
+                    return (
+                        <tbody key={index}>
+                        <tr>
+                            <td>{contact.name}</td>
+                            <td>{contact.phone}</td>
+                            <td>{contact.email}</td>
+                        </tr>
+
+                        </tbody>
+                    )
+                })}
             </table>
         </div>
     );

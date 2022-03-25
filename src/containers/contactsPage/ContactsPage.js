@@ -42,7 +42,6 @@ export const ContactsPage = (props) => {
             setName("");
             setPhone("");
             setEmail("");
-            console.log(contactList)
         }
     };
 
