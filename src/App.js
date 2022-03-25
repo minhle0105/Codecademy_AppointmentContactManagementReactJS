@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Switch, Route, Redirect, NavLink} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {AppointmentsPage} from "./containers/appointmentsPage/AppointmentsPage";
@@ -9,14 +9,19 @@ function App() {
     Define state variables for
     contacts and appointments
     */
-    const [contacts, setContacts] = useState([]);
-    const [appointments, setAppointments] = useState([]);
+    const [contacts, setContacts] = useState(JSON.parse(sessionStorage.getItem("contacts")) ? JSON.parse(sessionStorage.getItem("contacts")) : []);
+    const [appointments, setAppointments] = useState(JSON.parse(sessionStorage.getItem("appointments")) ? JSON.parse(sessionStorage.getItem("appointments")) : []);
 
     const
         ROUTES = {
             CONTACTS: "/contacts",
             APPOINTMENTS: "/appointments",
         };
+
+    useEffect(() => {
+        sessionStorage.setItem("contacts", JSON.stringify(contacts))
+        sessionStorage.setItem("appointments", JSON.stringify(appointments))
+    }, [contacts, appointments])
 
     /*
     Implement functions to add data to
