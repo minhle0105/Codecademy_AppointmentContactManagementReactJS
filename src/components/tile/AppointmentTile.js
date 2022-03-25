@@ -1,6 +1,7 @@
 import React from "react";
 
 export const AppointmentTile = ({ data }) => {
+    console.log(data)
     return (
         <div className="tile-container">
             <table>
@@ -17,7 +18,7 @@ export const AppointmentTile = ({ data }) => {
                         <tbody key={key}>
                         <tr>
                             <td>{appointment.title}</td>
-                            <td>{appointment.contact}</td>
+                            <td>{appointment.contact.name}</td>
                             <td>{appointment.date}</td>
                             <td>{appointment.time}</td>
                         </tr>
